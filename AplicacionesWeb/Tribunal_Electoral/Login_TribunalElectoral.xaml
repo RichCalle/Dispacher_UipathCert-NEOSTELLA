@@ -1,0 +1,504 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Intervalo de tiempo para generar un nuevo intento. " Name="in_TmsInterval" Type="InArgument(x:TimeSpan)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property sap2010:Annotation.AnnotationText="Cantidad de intentos para realizar el logueo. " Name="in_IntRetry" Type="InArgument(x:Int32)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property sap2010:Annotation.AnnotationText="URL para ingreso a TribunalElectoral." Name="In_StrURL_TribunalElectoral" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="In_Str_Credencial_TribunalElectoral" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Main.in_IntRetry>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Main.in_IntRetry>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1174,3497.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Sura_Utilities_Orquestador</x:String>
+      <x:String>CredentialManagement</x:String>
+      <x:String>UiPath.Credentials.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>Sura.Utilities.Orquestador</AssemblyReference>
+      <AssemblyReference>Sura.Utilities.Orquestador_Expressions_64334135</AssemblyReference>
+      <AssemblyReference>CredentialManagement</AssemblyReference>
+      <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="LogIn TribunalElectoral" sap:VirtualizedContainerService.HintSize="1184,3432.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="StrUser_TribunalElectoral" />
+      <Variable x:TypeArguments="ss:SecureString" Name="StrPass_TribunalElectoral" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1142,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Start Login TribunalElectoral.&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Check for User and Pass for the VPN and Plaza Construction. &#xA;If failed the process will Stop." DisplayName="Get Username and password " sap:VirtualizedContainerService.HintSize="1142,860.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Get User and Pass" sap:VirtualizedContainerService.HintSize="622,578" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="580,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[&quot;Get Credencial Windows, In_Str_Credencial_TribunalElectoral:&quot;+ In_Str_Credencial_TribunalElectoral]" />
+          <ui:GetSecureCredential sap2010:Annotation.AnnotationText="Credencial_TribunalElectoral&#xA;" CredentialType="Generic" DisplayName="Get secure Credencial_TribunalElectoral" sap:VirtualizedContainerService.HintSize="580,66" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" Password="[StrPass_TribunalElectoral]" PersistanceType="Enterprise" Target="[In_Str_Credencial_TribunalElectoral]" Username="[StrUser_TribunalElectoral]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:GetSecureCredential>
+          <If Condition="[StrPass_TribunalElectoral is nothing]" DisplayName="If Pass does not exist, Finish" sap:VirtualizedContainerService.HintSize="580,245.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Throw DisplayName="Throw Pass not exist" Exception="[new exception]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
+            </If.Then>
+            <If.Else>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[&quot;User: &quot; + StrUser_TribunalElectoral]" />
+            </If.Else>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="626.666666666667,21.3333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Pass does not exist" sap:VirtualizedContainerService.HintSize="478.666666666667,431.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,238.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="The password to log into, VPN was not found at the credentials manager. " DisplayName="Send Outlook Mail Message Unable to get VPN credentials " sap:VirtualizedContainerService.HintSize="334,146.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="Unable to get VPN credentials " To="[in_ControllerEmail]">
+                      <ui:SendOutlookMail.Files>
+                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                      </ui:SendOutlookMail.Files>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:SendOutlookMail>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <Throw sap2010:Annotation.AnnotationText="Unable to retrieve password. Process stopped." Exception="[new exception(&quot;Unable to retrieve password. Process stopped.&quot;)]" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Throw_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Throw>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <TryCatch DisplayName="Try Catch LogIn TribunalElectoral" sap:VirtualizedContainerService.HintSize="1142,2172" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1103.33333333333,1912" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_IntRetry]" RetryInterval="[in_TmsInterval]">
+          <ui:RetryScope.ActivityBody>
+            <ActivityAction>
+              <Sequence DisplayName="Iniciar sesión en TribunalElectoral" sap:VirtualizedContainerService.HintSize="1061.33333333333,1734.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser TribunalElectoral" sap:VirtualizedContainerService.HintSize="1019.33333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Url="[In_StrURL_TribunalElectoral]">
+                  <ui:OpenBrowser.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                      </ActivityAction.Argument>
+                      <Sequence sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;URL Tribunal Electoral, In_StrURL_TribunalElectoral:&quot; + In_StrURL_TribunalElectoral]" />
+                        <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:OpenBrowser.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:OpenBrowser>
+                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'TribunalElectoral'" sap:VirtualizedContainerService.HintSize="1019.33333333333,1550" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="37bdedc4207a571003de340df2eb38fb" Selector="&lt;html app='chrome.exe' title='Servicio de Verificación de Identidad' /&gt;">
+                  <ui:BrowserScope.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.333333333333,1404" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Boolean" Name="vBooExisteCampoUsuario" />
+                          <Variable x:TypeArguments="x:Boolean" Name="vBooLogBefore" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Pick sap:VirtualizedContainerService.HintSize="943.333333333333,414.666666666667" sap2010:WorkflowViewState.IdRef="Pick_1">
+                          <PickBranch sap:VirtualizedContainerService.HintSize="384.666666666667,368.666666666667" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists DisplayName="Element Exists 'Campo de texto Usuario'" Exists="[vBooExisteCampoUsuario]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="834eb3e0-913a-40ff-abab-d86cba80ef14" InformativeScreenshot="c67e52d81327669de68943520b538de0" Selector="&lt;webctrl tag='INPUT' type='text' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:UiElementExists.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                          </PickBranch>
+                          <PickBranch sap:VirtualizedContainerService.HintSize="384.666666666667,368.666666666667" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists DisplayName="Element Exists 'Campo de texto Usuario'" Exists="[vBooLogBefore]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="834eb3e0-913a-40ff-abab-d86cba80ef14" InformativeScreenshot="cc3e518817ecaeb80bf8880fdaf980fb" Selector="&lt;webctrl aaname='                      Inicio                  ' tag='A' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:UiElementExists.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                          </PickBranch>
+                        </Pick>
+                        <If Condition="[vBooExisteCampoUsuario]" DisplayName="If existe campo de texto usuario en el inicio de sesión" sap:VirtualizedContainerService.HintSize="943.333333333333,245.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entró a la pestaña de inicio de sesión correctamente&quot;]" />
+                          </If.Then>
+                          <If.Else>
+                            <If Condition="[vBooLogBefore]" DisplayName="If ya estaba logueado?" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence DisplayName="Cerrar sesión." sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Ya estaba logueado&quot;]" />
+                                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Cerrar sesión TribunalElectoral'" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="dceb33354317a1021d170ebf2b77d11f" Selector="&lt;html app='chrome.exe' title='TribunalElectoral*' /&gt;">
+                                    <ui:BrowserScope.Body>
+                                      <ActivityAction x:TypeArguments="x:Object">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                        </ActivityAction.Argument>
+                                        <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2500" DisplayName="Click 'Salir TribunalElectoral'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                                          <ui:Click.CursorPosition>
+                                            <ui:CursorPosition Position="Center">
+                                              <ui:CursorPosition.OffsetX>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetX>
+                                              <ui:CursorPosition.OffsetY>
+                                                <InArgument x:TypeArguments="x:Int32" />
+                                              </ui:CursorPosition.OffsetY>
+                                            </ui:CursorPosition>
+                                          </ui:Click.CursorPosition>
+                                          <ui:Click.Target>
+                                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9c56113a-631d-4f4a-888e-649c538c6f3d" InformativeScreenshot="c6290a596b3ff8a71ee580a95b79cca9" Selector="&lt;webctrl aaname=' Salir' omit:parentid='page-wrapper' tag='A' /&gt;" TimeoutMS="4000" WaitForReady="COMPLETE" />
+                                          </ui:Click.Target>
+                                        </ui:Click>
+                                      </ActivityAction>
+                                    </ui:BrowserScope.Body>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:BrowserScope>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence DisplayName="Error al cargar la página TribunalElectoral" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;No existe la ventana de inicio de sesión&quot;]" />
+                                  <Throw DisplayName="Throw TribunalElectoral no cargó correctamente" Exception="[New BusinessRuleException(&quot;La página TribunalElectoral no cargó correctamente&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </If.Else>
+                        </If>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DelayBefore="500" DisplayName="Type Into 'Usuario'" EmptyField="True" sap:VirtualizedContainerService.HintSize="943.333333333333,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[StrUser_TribunalElectoral]">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cd08a872-b9d1-4209-bb2d-bf0a8bb7eede" InformativeScreenshot="f199bb67f388bd543295aa8a8e2a5247" Selector="&lt;webctrl tag='INPUT' type='text' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeInto>
+                        <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Secure Text 'Contraseña'" EmptyField="True" sap:VirtualizedContainerService.HintSize="943.333333333333,106" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[StrPass_TribunalElectoral]" SimulateType="True">
+                          <ui:TypeSecureText.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="201a2ce1-7eb3-467c-947d-2a35e583e2aa" InformativeScreenshot="1b878186856376beacc95755bc276d6d" Selector="&lt;webctrl tag='INPUT' type='password' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:TypeSecureText.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:TypeSecureText>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Seleccionar la entidad Diagnostico y asistencia medica ....'" sap:VirtualizedContainerService.HintSize="943.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="59e5ab55-c04c-4024-89b5-b16045514a74" InformativeScreenshot="4fe0477fa7578604d6b5fc4df1865a23" Selector="&lt;webctrl aria-role='presentation' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' idx='1' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Botón ingresar'" sap:VirtualizedContainerService.HintSize="943.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4a2d693a-ac8c-43bf-be27-052c390a5ee9" InformativeScreenshot="b5090ec9f047ae3ecba900af11891ef2" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:BrowserScope.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:BrowserScope>
+              </Sequence>
+            </ActivityAction>
+          </ui:RetryScope.ActivityBody>
+          <ui:RetryScope.Condition>
+            <ActivityFunc x:TypeArguments="x:Boolean" />
+          </ui:RetryScope.Condition>
+        </ui:RetryScope>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1108,21.3333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw DisplayName="Throw Error de sistema TribunalElectoral" Exception="[new System.Exception(&quot;Ocurrió un error en el inicio de sesión en TribunalElectoral&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1108,21.3333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw DisplayName="Throw Sistema. Error al cargar la pagína de TribunalElectoral" Exception="[new System.Exception(exception.ToString)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1142,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Login TribunalElectoral exitoso.&quot;]" />
+  </Sequence>
+</Activity>

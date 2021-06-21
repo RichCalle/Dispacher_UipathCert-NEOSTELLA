@@ -1,0 +1,426 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Consulta_Google" this:Consulta_Google.In_StrURL_Google="https://www.google.com/search?q=" this:Consulta_Google.In_StrNombre1="Richard" this:Consulta_Google.In_StrApellido2="Duque" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_StrURL_Google" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrNombre1" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrNombre2" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrApellido1" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrApellido2" Type="InArgument(x:String)" />
+    <x:Property Name="In_StrRutaGuardado" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>828.666666666667,2354.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Consulta_Google_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="23">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.PDF</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Consulta_Google" sap:VirtualizedContainerService.HintSize="838.666666666667,2290" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="URL_NameBusquedaGoogle" />
+      <Variable x:TypeArguments="x:Boolean" Name="SearhExist" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="796.666666666667,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Init | Consulta Google.&quot;]" />
+    <Sequence DisplayName="Crear URL Busquedad Google" sap:VirtualizedContainerService.HintSize="796.666666666667,68" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="484,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[In_StrNombre1]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <If Condition="[In_StrNombre1 &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,52" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[In_StrNombre1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+      </If>
+      <If Condition="[In_StrNombre2 &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,52" sap2010:WorkflowViewState.IdRef="If_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle + "+" +In_StrNombre2]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+      </If>
+      <If Condition="[In_StrApellido1 &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,52" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle + "+" +In_StrApellido1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+      </If>
+      <If Condition="[In_StrApellido2 &lt;&gt; &quot;&quot;]" sap:VirtualizedContainerService.HintSize="484,216" sap2010:WorkflowViewState.IdRef="If_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[URL_NameBusquedaGoogle + "+" +In_StrApellido2]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Validar si Navegador Google Existe" sap:VirtualizedContainerService.HintSize="796.666666666667,926.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_11">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="PagGoogleExiste" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="754.666666666667,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Ruta HTML Google: &quot; + &quot;C:\DWF\Consultar_Antecedentes\CC_123456\&quot;+URL_NameBusquedaGoogle+&quot;-Google_Search.html&quot;]" />
+      <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[PagGoogleExiste]" sap:VirtualizedContainerService.HintSize="754.666666666667,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+        <ui:UiElementExists.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5731931-3931-452f-9dab-96ad24275d8b" InformativeScreenshot="6e66e2d9adea67d3adbb44b145d2f8b0" Selector="&lt;html app='chrome.exe' title='*Google Search' /&gt;" TimeoutMS="4000">
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:UiElementExists.Target>
+      </ui:UiElementExists>
+      <If Condition="[PagGoogleExiste]" DisplayName="If PagGoogleExiste" sap:VirtualizedContainerService.HintSize="754.666666666667,555.333333333333" sap2010:WorkflowViewState.IdRef="If_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Exist PagGoogle" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;Existe Navegador Abierto de Google&quot;]" />
+            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Camilo'" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="12ea1535fb50882ac14d33e67884c482" Selector="&lt;html app='chrome.exe' title='*Google Search' /&gt;">
+              <ui:BrowserScope.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,150.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[In_StrURL_Google+URL_NameBusquedaGoogle]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:BrowserScope.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:BrowserScope>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="NO exist PagGoogle" sap:VirtualizedContainerService.HintSize="508.666666666667,403.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="466.666666666667,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn" Message="[&quot;NO Existe Navegador Google, Abriendo&quot;]" />
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="In_StrURL_TribunalElectoral&#xA;EJ&#xA;https://www.google.com/search?q=juan+mario+velez" BrowserType="Chrome" DisplayName="Open Browser TribunalElectoral" sap:VirtualizedContainerService.HintSize="466.666666666667,178" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Url="[In_StrURL_Google+URL_NameBusquedaGoogle]">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:OpenBrowser>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Guardar Busqueda HTML" sap:VirtualizedContainerService.HintSize="476,723.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;URL Google, In_StrURL_Google:&quot; + In_StrURL_Google+URL_NameBusquedaGoogle]" />
+      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Camilo'" sap:VirtualizedContainerService.HintSize="434,498" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="12ea1535fb50882ac14d33e67884c482" Selector="&lt;html app='chrome.exe' title='*Google Search' /&gt;">
+        <ui:BrowserScope.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,352" sap2010:WorkflowViewState.IdRef="Sequence_12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+              <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[SearhExist]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                <ui:UiElementExists.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5731931-3931-452f-9dab-96ad24275d8b" InformativeScreenshot="6e66e2d9adea67d3adbb44b145d2f8b0" Selector="&lt;html app='chrome.exe' title='*Google Search' /&gt;&lt;webctrl id='result-stats' tag='DIV' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:UiElementExists.Target>
+              </ui:UiElementExists>
+              <If Condition="[SearhExist]" DisplayName="If SearhExist" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="If_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,808" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey 'INPUT'" sap:VirtualizedContainerService.HintSize="334,154.666666666667" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="s" KeyModifiers="Ctrl" SendWindowMessages="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="613d6a00-7a88-43d0-99b1-c8481123cf0b" InformativeScreenshot="02aa6b63d2b3a08185d262ce383b7a14" Selector="&lt;html app='chrome.exe' title='*Google Search' /&gt;&lt;webctrl aria-role='combobox' tag='INPUT' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into 'INPUT'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[In_StrRutaGuardado+&quot;\&quot;+URL_NameBusquedaGoogle+&quot;-Google_Search.html&quot;]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6ba1907d-6478-4eb4-bf37-44f676531df0" InformativeScreenshot="07479da7d1adee63f5ae48490e96c7da" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="992ecbc2-0e4e-431f-aa64-4d81d4856c4c" InformativeScreenshot="d965233f15bd822199f2fbae3d5eb763" Selector="&lt;wnd app='chrome.exe' cls='#*' title='Save As' /&gt;&lt;wnd ctrlid='1' title='&amp;amp;Save' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Ruta HTML Google: &quot; + &quot;C:\DWF\Consultar_Antecedentes\CC_123456\&quot;+URL_NameBusquedaGoogle+&quot;-Google_Search.html&quot;]" />
+                    <Sequence DisplayName="File Exist, Replace" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Boolean" Name="FileExist" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[FileExist]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                        <ui:UiElementExists.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5731931-3931-452f-9dab-96ad24275d8b" InformativeScreenshot="275ebfae4d51a32c41fb0c10ca88491b" Selector="&lt;wnd app='chrome.exe' cls='#*' title='Confirm Save As' /&gt;" TimeoutMS="2000">
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:UiElementExists.Target>
+                      </ui:UiElementExists>
+                      <If Condition="[FileExist]" sap:VirtualizedContainerService.HintSize="484,255.333333333333" sap2010:WorkflowViewState.IdRef="If_6">
+                        <If.Then>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="992ecbc2-0e4e-431f-aa64-4d81d4856c4c" InformativeScreenshot="42b5eaa81e9c4415a550acdf894e4335" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Confirm Save As' /&gt;&lt;wnd aaname='Confirm Save As' cls='DirectUIHWND' /&gt;&lt;wnd aaname='Yes' cls='Button' title='&amp;amp;Yes' /&gt;">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                        </If.Then>
+                      </If>
+                    </Sequence>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:BrowserScope.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:BrowserScope>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="796.666666666667,93.3333333333333" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;End | Consulta Google.&quot;]" />
+  </Sequence>
+</Activity>
